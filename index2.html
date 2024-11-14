@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Celebration</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #6a1b9a;
+  }
+
+  /* Balloons as background */
+  .background {
+    background: url("balloons2.jpeg") no-repeat center center/cover;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: #6a1b9a;
+  }
+
+  .cake img {
+    width: 200px;
+    height: auto;
+    margin: 20px 0;
+  }
+
+  .message {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .wish-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #9c27b0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  .wish-button:hover {
+    background-color: #6a1b9a;
+  }
+
+  /* Popup styles */
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .popup-content {
+    background-color: #ff99ff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #4a148c;
+    width: 100%;
+  }
+
+  .popup-show {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .wish-textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    box-sizing: border-box;
+  }
+
+  .send-wish-button {
+    padding: 10px 20px;
+    background-color: #ff4081;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .send-wish-button:hover {
+    background-color: #e91e63;
+  }
+</style>
+</head>
+<body>
+  <!-- Balloons Background -->
+  <div class="background"></div>
+
+  <div class="container">
+    <!-- Cake Image -->
+    <div class="cake">
+      <img src="cake3.jpeg" alt="Cake">
+    </div>
+    <!-- Birthday Message -->
+    <div class="message">
+      Happy Birthday! 🎉
+    </div>
+    <!-- Make a Wish Button -->
+    <button id="makeWishButton" class="wish-button">Make a Wish</button>
+  </div>
+
+  <!-- Popup for Making a Wish -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <p>Make your wish and keep it secret! 🎂✨</p>
+      <textarea id="wishInput" class="wish-textarea" placeholder="Type your wish here..."></textarea>
+      <button id="sendWishButton" class="send-wish-button">Send Wish</button>
+    </div>
+  </div>
+
+<script>
+  // Get elements
+  const makeWishButton = document.getElementById("makeWishButton");
+  const popup = document.getElementById("popup");
+  const sendWishButton = document.getElementById("sendWishButton");
+  const wishInput = document.getElementById("wishInput");
+
+  // Show the popup when the "Make a Wish" button is clicked
+  makeWishButton.addEventListener("click", () => {
+    popup.classList.add("popup-show");
+  });
+
+  // Hide the popup and remove the "Make a Wish" button when the wish is sent
+  sendWishButton.addEventListener("click", () => {
+    const wish = wishInput.value.trim();
+    if (wish) {
+      console.log(`User's wish: ${wish}`);
+    }
+    popup.classList.remove("popup-show");
+    makeWishButton.style.display = "none";
+  });
+</script>
+</body>
+</html>

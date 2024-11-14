@@ -1,0 +1,69 @@
+/* General styling */
+body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    padding-top: 12px; /* Added padding to move the dashboard down */
+    background-color: #f4f4f9;
+}
+
+/* Main container styling */
+.dashboard {
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px; /* Updated radius to 12 pixels */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white; /* Changed background color to white */
+    width: 320px;
+    max-width: 90%;
+    margin-top: 12px; /* Moved the dashboard 12 pixels down */
+}
+
+/* Calendar container styling */
+.react-calendar {
+    margin: 20px 0;
+}
+
+/* Default styling for date tiles */
+.react-calendar__tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 38px; /* Adjusted width for margin space */
+    height: 38px; /* Adjusted height for margin space */
+    color: #555;
+    background-color: white; /* Set tile background to white */
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    margin: 3px; /* Added margin to create space between tiles */
+}
+
+/* Hover animation */
+.react-calendar__tile:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for dates with birthdays */
+.birthday-tile {
+    background-color: #ECFFFC;
+    color: #00ADE7;
+    font-weight: bold;
+}
+
+/* Styling for selected date */
+.react-calendar__tile--active {
+    background-color: #FFF1DB !important;
+    color: #555;
+    border: 2px solid #FFA500;
+    box-shadow: 0 0 5px rgba(255, 165, 0, 0.5); /* Optional glow effect */
+}
+
+/* Styling for dates without birthdays (default style retained) */
+.no-birthday-tile {
+    background-color: white;
+    color: #555;
+}

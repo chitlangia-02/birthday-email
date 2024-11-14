@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Email Template Editor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Birthday Email Editor</h1>
+        <form id="email-form" class="editor-form">
+            <div class="form-group">
+                <label for="recipient-name">Recipient's Name:</label>
+                <input type="text" id="recipient-name" placeholder="Enter the recipient's name">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Birthday Message:</label>
+                <textarea id="message" rows="5" placeholder="Write your birthday message here"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="image-url">Image URL (Optional):</label>
+                <input type="text" id="image-url" placeholder="Paste an image URL here">
+            </div>
+
+            <button type="button" id="preview-button">Preview Email</button>
+        </form>
+
+        <div id="email-preview" class="email-template hidden">
+            <div class="email-header">
+                <h2>Happy Birthday <span id="preview-name"></span>!</h2>
+            </div>
+            <div class="email-content">
+                <p id="preview-message"></p>
+                <div id="preview-image"></div>
+            </div>
+            <div class="email-footer">
+                <p>Warm wishes,</p>
+                <p>ABC Group</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const previewButton = document.getElementById('preview-button');
+        const emailPreview = document.getElementById('email-preview');
+        const recipientName = document.getElementById('recipient-name');
+        const message = document.getElementById('message');
+        const imageUrl = document.getElementById('image-url');
+        const previewName = document.getElementById('preview-name');
+        const previewMessage = document.getElementById('preview-message');
+        const previewImage = document.getElementById('preview-image');
+
+        previewButton.addEventListener('click', () => {
+            const name = recipientName.value.trim();
+            const msg = message.value.trim();
+            const imgUrl = imageUrl.value.trim();
+
+            if (name) {
+                previewName.textContent = name;
+            } else {
+                previewName.textContent = 'Friend';
+            }
+
+            previewMessage.textContent = msg || "Wishing you a day filled with love and joy!";
+            
+            if (imgUrl) {
+                previewImage.innerHTML = `<img src="${imgUrl}" alt="Birthday Image">`;
+            } else {
+                previewImage.innerHTML = "";
+            }
+
+            emailPreview.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
